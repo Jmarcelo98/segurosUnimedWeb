@@ -5,7 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SnackbarModule } from '../snackbar/snackbar.module';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 
 
@@ -19,7 +21,10 @@ import { SnackbarModule } from '../snackbar/snackbar.module';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    SnackbarModule
+    MatRadioModule,
+    MatButtonModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ]
 })
 export class CustomerAddEditModule { }

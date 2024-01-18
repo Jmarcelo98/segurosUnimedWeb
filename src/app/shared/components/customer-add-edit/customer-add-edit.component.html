@@ -1,34 +1,89 @@
 <div id="confirm-dialog">
     <div class="header d-flex justify-content-between align-content-center">
         <div>
-            <span class="typography body body-lg-bold">
-                {{data.title}}
-            </span>
+            <span class="body body-lg-bold">{{data.title}}</span>
         </div>
 
         <button class="btn ds-button-rounded tertiary icon-close" (click)="onNoClick()">
-            <i class="fi fi-rr-cross"></i>
+            X
         </button>
 
     </div>
 
 
-    <div class="modal-content">
+    <div class="modal-content container" id="content-mt">
 
-        <form [formGroup]="formType">
+        <form [formGroup]="formCustomer">
 
             <div class="row" id="iconDescription">
 
-                <div class="col">
-                    <mat-label>Description</mat-label>
+                <div class="col-5">
+                    <mat-label>Nome</mat-label>
                     <mat-form-field class="full-width" appearance="outline">
-                        <i matPrefix class="fi fi-rr-memo pad mr"></i>
-                        <input matInput name="description" type="text" formControlName="description"
-                            placeholder="Salary">
+                        <input matInput name="name" type="text" formControlName="name" placeholder="Doutor Estranho">
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-5">
+                    <mat-label>Email</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="email" type="email" formControlName="email"
+                            placeholder="doutor@vingadores.marvel">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-2">
+                    <mat-label>Gênero</mat-label>
+                    <mat-radio-group class="example-radio-group" formControlName="gender">
+                        <mat-radio-button value="M">Masculino</mat-radio-button>
+                        <mat-radio-button value="F">Feminino</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+            </div>
+
+            <div class="row" formGroupName="adresse">
+
+                <div class="col-3">
+                    <mat-label>CEP</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="cep" mask="00000-000" type="text" formControlName="cep"
+                            placeholder="00000-000" (focusout)="searchAdresse()">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-5">
+                    <mat-label>Logradouro</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="publicPlace" type="text" formControlName="publicPlace">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-4">
+                    <mat-label>Bairro</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="district" formControlName="district" type="text">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-3">
+                    <mat-label>Complemento</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="complement" type="text" formControlName="complement">
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-2">
+                    <mat-label>UF</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="uf" type="text" formControlName="uf">
                     </mat-form-field>
                 </div>
 
             </div>
+
 
             <div class="row">
 
@@ -36,17 +91,16 @@
 
                     <div class="action-buttons  mt-4">
 
-                        <button mat-button class="btn ds-button-danger" (click)="cancelClick()">
-                            <i class="fi fi-rr-check"></i>
-                            Cancel
+                        <button mat-raised-button (click)="cancelClick()">
+                            Cancelar
                         </button>
 
                         <div *ngIf="data.objectEdit == null then add else edit"></div>
 
                         <ng-template #add>
 
-                            <button mat-button class="btn ds-button-primary"
-                                (click)="data.isIncome ? addTypeIncome() : addTypeExpense() ">
+                            <button mat-raised-button color="primary" class="btn ds-button-primary"
+                                (click)="addCustomer()">
                                 <i class="fi fi-rr-check"></i>
                                 {{data.buttons.primary}}
                             </button>
@@ -55,19 +109,13 @@
 
                         <ng-template #edit>
 
-                            <button mat-button class="btn ds-button-primary"
-                                (click)="data.isIncome ? editTypeIncome() : editTypeExpense() ">
+                            <button mat-raised-button color="primary" (click)="editCustomer()">
                                 <i class="fi fi-rr-check"></i>
                                 {{data.buttons.primary}}
                             </button>
 
                         </ng-template>
 
-                        <!-- <button mat-button class="btn ds-button-primary"
-                            (click)="data.isIncome && data.objectEdit == null ? addTypeIncome() : addTypeExpense() ">
-                            <i class="fi fi-rr-check"></i>
-                            {{data.buttons.primary}}
-                        </button> -->
 
 
 

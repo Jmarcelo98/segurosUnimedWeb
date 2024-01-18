@@ -14,17 +14,17 @@ export class CustomerService extends BaseService{
   }
 
   findAllByFilter(form: any, paginator: Paginator) {
-
     var params = this.setPageToHttpParam(paginator)
-
     return this.http.post<any>(`${this.endPoint}/filter`, form, {params: params})
   }
 
-  findAll(paginator: Paginator) {
 
-    var params = this.setPageToHttpParam(paginator)
+  create(form: any) {
+    return this.http.post(`${this.endPoint}`, form);
+  }
 
-    return this.http.get<any>(`${this.endPoint}`, {params: params})
+  update(form: any) {
+    return this.http.patch(`${this.endPoint}`, form);
   }
 
   delete(id: number) {

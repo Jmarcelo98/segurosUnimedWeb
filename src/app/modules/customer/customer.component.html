@@ -69,14 +69,14 @@
 
 <!-- <app-customer-list [customers]="customers" ></app-customer-list> -->
 
-<div class="row">
+<div class="row add">
     <div class="col-12">
-        <button mat-raised-button color="primary">Adicionar Cliente</button>
+        <button mat-raised-button color="primary" (click)="create()">Adicionar Cliente</button>
     </div>
 </div>
 
 
-<div *ngIf="customers?.content.lenght">
+<div *ngIf="customers?.content.length > 0">
 
     <table mat-table [dataSource]="customers?.content" class="mat-elevation-z8 demo-table">
 
@@ -123,7 +123,7 @@
 
 </div>
 
-<div *ngIf="!customers?.content.lenght">
+<div *ngIf="!customers?.content.length">
 
     <p>Sem clientes cadastrados</p>
 

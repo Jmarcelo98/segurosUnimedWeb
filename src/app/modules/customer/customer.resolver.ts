@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/core/Customer';
@@ -20,8 +21,15 @@ export class CustomerResolver implements Resolve<Customer[]> {
     totalElements: 0,
     pageSize: 5,
   }
+
+  formSearch = new FormGroup({
+    name: new FormControl(null),
+    email: new FormControl(null),
+    gender: new FormControl(null),
+  });
+
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]> {
-    return this.customerService.findAll(this.paginator);
+    return this.customerService.findAllByFilter(this.formSearch.getRawValue(), this.paginator);
   }
 }

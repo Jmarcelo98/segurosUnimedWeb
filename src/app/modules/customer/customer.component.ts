@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/core/Customer';
 import { Paginator } from 'src/app/core/Paginator';
+import { CustomerAddEditComponent } from 'src/app/shared/components/customer-add-edit/customer-add-edit.component';
 import { DialogConfirmComponent } from 'src/app/shared/components/dialog-confirm/dialog-confirm.component';
 import { IPaginator } from 'src/app/shared/components/paginator/paginator.component';
 import { CustomerService } from 'src/app/shared/services/customer.service';
@@ -22,12 +23,12 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.create()
     this.paginator.pageIndex = this.customers.number;
     this.paginator.totalElements = this.customers.totalElements;
   }
 
   customers: any;
-  
 
   formSearch = new FormGroup({
     name: new FormControl(null, []),
@@ -46,12 +47,11 @@ export class CustomerComponent implements OnInit {
 
   resetAfterFocus(value: string) {
 
-    if(this.formSearch.get(value)?.value === '') {
+    if (this.formSearch.get(value)?.value === '') {
       this.formSearch.get(value)?.setValue(null);
     }
 
   }
-
 
   search() {
 
@@ -69,8 +69,33 @@ export class CustomerComponent implements OnInit {
 
   }
 
-  edit(item: any) {
+  create() {
+    this.dialog.open(CustomerAddEditComponent, {
+      width: '800px',
+      height: '450px',
+      data: {
+        objectEdit: null,
+        title: 'Criar cliente',
+        buttons: {
+          primary: 'Criar',
+        }
+      },
+    });
+  }
 
+  edit (element: any) {
+    this.dialog.open(CustomerAddEditComponent, {
+      width: '800px',
+      height: '450px',
+      data: {
+        objectEdit: element,
+        title: 'Editar cliente',
+        buttons: {
+          primary: 'Atualizar', 
+          secondary: 'Cancelar', 
+        }
+      },
+    });
   }
 
   delete(id: number) {

@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarModule } from './shared/components/navbar/navbar.module';
+import { CustomerAddEditModule } from './shared/components/customer-add-edit/customer-add-edit.module';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpErrorInterceptor } from './core/interceptor/HttpErrorInterceptor';
+
+import { IConfig, provideEnvironmentNgxMask } from 'ngx-mask'
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [
@@ -17,9 +26,15 @@ import { NavbarModule } from './shared/components/navbar/navbar.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    CustomerAddEditModule,
+    MatSnackBarModule,
+
   ],
-  providers: [],
+  providers: [
+    provideEnvironmentNgxMask(maskConfig),
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+
+    .mat-mdc-form-field {
+        display: initial;
+    }
+
+    .example-radio-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #confirm-dialog .header {
+        background: #254890;
+        ;
+        color: white;
+        padding: 8px 24px;
+        align-items: center;
+    }
+
+    #confirm-dialog .text {
+        margin-left: 10px;
+        font-size: 16px;
+    }
+
+
+    #confirm-dialog .header button {
+        color: white;
+    }
+
+    #confirm-dialog .icon-close {
+        color: white;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    #confirm-dialog .action-buttons {
+        display: flex;
+    }
+
+    #confirm-dialog .action-buttons button {
+        margin-left: 15px;
+    }
+
+
+    /* CONFIG SNACKS */
+    .snack-erro {
+        background: #FBE5E7;
+        color: #27314A;
+        border-left: solid 3px #DD1F2E;
+    }
+
+    .snack-erro .icon.erro {
+        color: #DD1F2E;
+        display: initial;
+    }
+
+    .snack-sucesso {
+        background: #238A4F;
+        color: white;
+        border-left: solid 3px #FBE5E7;
+    }
+
+
+}

@@ -2,16 +2,6 @@ mat-divider {
     margin: 3em 0em;
 }
 
-.mat-mdc-form-field {
-    display: initial;
-}
-
-.example-radio-group {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
 .search{
     margin-top: 35px;
 }
@@ -32,4 +22,8 @@ mat-divider {
 
 .end {
     text-align: end;
+}
+
+.add {
+    margin: 15px 0px;
 }
