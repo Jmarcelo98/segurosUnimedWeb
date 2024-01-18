@@ -14,7 +14,7 @@ import { CustomerService } from 'src/app/shared/services/customer.service';
 
 export class CustomerResolver implements Resolve<Customer[]> {
 
-  constructor(private customerService: CustomerService){}
+  constructor(private customerService: CustomerService) { }
 
   paginator: Paginator = {
     pageIndex: 0,
@@ -26,9 +26,11 @@ export class CustomerResolver implements Resolve<Customer[]> {
     name: new FormControl(null),
     email: new FormControl(null),
     gender: new FormControl(null),
+    locality: new FormControl(null),
+    uf: new FormControl(null),
   });
 
-  
+
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any[]> {
     return this.customerService.findAllByFilter(this.formSearch.getRawValue(), this.paginator);
   }

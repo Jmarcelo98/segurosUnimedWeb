@@ -18,3 +18,7 @@ mat-divider {
 .add {
     margin: 15px 0px;
 }
+
+.option{
+    align-self: flex-end;
+}

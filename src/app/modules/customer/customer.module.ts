@@ -13,6 +13,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 import { PaginatorModule } from 'src/app/shared/components/paginator/paginator.module';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerViewComponent } from './customer-view/customer-view.component';
@@ -39,6 +40,7 @@ import { AdresseModule } from '../adresse/adresse.module';
     MatIconModule,
     MatDialogModule,
     PaginatorModule,
+    MatSelectModule,
     AdresseModule
   ]
 })

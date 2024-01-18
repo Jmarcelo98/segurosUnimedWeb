@@ -10,7 +10,7 @@
 
             <div class="row">
 
-                <div class="col-md-5 col-12">
+                <div class="col-md-6 col-12">
                     <mat-label>Nome</mat-label>
                     <mat-form-field class="full-width" appearance="outline">
                         <i matPrefix class="fi fi-rr-envelope mr"></i>
@@ -20,7 +20,7 @@
                 </div>
 
 
-                <div class="col-md-5 col-12">
+                <div class="col-md-6 col-12">
                     <mat-label>E-mail</mat-label>
                     <mat-form-field class="full-width" appearance="outline">
                         <i matPrefix class="fi fi-rr-envelope mr"></i>
@@ -29,12 +29,31 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-md-2 col-12">
+                <div class="col-3">
                     <mat-label>Gênero</mat-label>
                     <mat-radio-group class="example-radio-group" formControlName="gender">
                         <mat-radio-button value="M">Masculino</mat-radio-button>
                         <mat-radio-button value="F">Feminino</mat-radio-button>
                     </mat-radio-group>
+                </div>
+
+                <div class="col-5">
+                    <mat-label>Cidade/Localidade</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <i matPrefix class="fi fi-rr-envelope mr"></i>
+                        <input matInput name="locality" formControlName="locality" placeholder="Ex. São Paulo">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-4 option">
+                    <mat-form-field>
+                        <mat-label>UF</mat-label>
+                        <mat-select [(ngModel)]="selectedUf" formControlName="uf">
+                            <mat-option *ngFor="let item of ufs" [value]="item">
+                                {{item}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
 
             </div>

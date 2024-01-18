@@ -12,6 +12,10 @@ export class AdresseService extends BaseService {
     super('adresses')
   }
 
+  findAllUf() {
+    return this.http.get<any>(`${this.endPoint}/uf`)
+  }
+
   create(form: any, idCustomer: number) {
     return this.http.post<any>(`${this.endPoint}/${idCustomer}`, form)
   }
