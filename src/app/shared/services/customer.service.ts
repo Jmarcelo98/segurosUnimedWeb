@@ -13,6 +13,10 @@ export class CustomerService extends BaseService{
     super('customers')
   }
 
+  findById(id: number) {
+    return this.http.get<any>(`${this.endPoint}/${id}`)
+  }
+
   findAllByFilter(form: any, paginator: Paginator) {
     var params = this.setPageToHttpParam(paginator)
     return this.http.post<any>(`${this.endPoint}/filter`, form, {params: params})

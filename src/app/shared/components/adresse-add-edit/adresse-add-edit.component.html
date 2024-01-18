@@ -1,4 +1,5 @@
 <div id="confirm-dialog">
+
     <div class="header d-flex justify-content-between align-content-center">
         <div>
             <span class="body body-lg-bold">{{data.title}}</span>
@@ -13,33 +14,47 @@
 
     <div class="modal-content container" id="content-mt">
 
-        <form [formGroup]="formCustomer">
+        <form [formGroup]="formAdresse">
 
             <div class="row" id="iconDescription">
 
-                <div class="col-5">
-                    <mat-label>Nome</mat-label>
+                <div class="col-3">
+                    <mat-label>CEP</mat-label>
                     <mat-form-field class="full-width" appearance="outline">
-                        <input matInput name="name" type="text" formControlName="name" placeholder="Doutor Estranho">
+                        <input matInput name="zipCode" mask="00000-000" type="text" formControlName="zipCode"
+                            placeholder="00000-000" (focusout)="searchAdresse()">
                     </mat-form-field>
                 </div>
 
-
                 <div class="col-5">
-                    <mat-label>Email</mat-label>
+                    <mat-label>Logradouro</mat-label>
                     <mat-form-field class="full-width" appearance="outline">
-                        <input matInput name="email" type="email" formControlName="email"
-                            placeholder="doutor@vingadores.marvel">
+                        <input matInput name="publicPlace" type="text" formControlName="publicPlace">
                     </mat-form-field>
                 </div>
+
+                <div class="col-4">
+                    <mat-label>Bairro</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="district" formControlName="district" type="text">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-3">
+                    <mat-label>Complemento</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="complement" type="text" formControlName="complement">
+                    </mat-form-field>
+                </div>
+
 
                 <div class="col-2">
-                    <mat-label>Gênero</mat-label>
-                    <mat-radio-group class="example-radio-group" formControlName="gender">
-                        <mat-radio-button value="M">Masculino</mat-radio-button>
-                        <mat-radio-button value="F">Feminino</mat-radio-button>
-                    </mat-radio-group>
+                    <mat-label>UF</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <input matInput name="uf" type="text" formControlName="uf">
+                    </mat-form-field>
                 </div>
+
 
             </div>
 
@@ -59,7 +74,7 @@
                         <ng-template #add>
 
                             <button mat-raised-button color="primary" class="btn ds-button-primary"
-                                (click)="addCustomer()">
+                                (click)="addAdresse()">
                                 <i class="fi fi-rr-check"></i>
                                 {{data.buttons.primary}}
                             </button>
@@ -68,12 +83,15 @@
 
                         <ng-template #edit>
 
-                            <button mat-raised-button color="primary" (click)="editCustomer()">
+                            <button mat-raised-button color="primary" (click)="editAdresse()">
                                 <i class="fi fi-rr-check"></i>
                                 {{data.buttons.primary}}
                             </button>
 
                         </ng-template>
+
+
+
 
 
                     </div>
@@ -88,4 +106,5 @@
 
 
     </div>
+
 </div>

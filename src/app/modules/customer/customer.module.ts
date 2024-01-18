@@ -14,11 +14,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PaginatorModule } from 'src/app/shared/components/paginator/paginator.module';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerViewComponent } from './customer-view/customer-view.component';
+import { AdresseModule } from '../adresse/adresse.module';
 
 
 @NgModule({
   declarations: [
-    CustomerComponent
+    CustomerComponent,
+    CustomerListComponent,
+    CustomerViewComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +38,8 @@ import { PaginatorModule } from 'src/app/shared/components/paginator/paginator.m
     MatTableModule,
     MatIconModule,
     MatDialogModule,
-    PaginatorModule
+    PaginatorModule,
+    AdresseModule
   ]
 })
 export class CustomerModule { }

@@ -1,0 +1,49 @@
+<div *ngIf="customers?.content.length > 0">
+
+    <table mat-table [dataSource]="customers?.content" class="mat-elevation-z8 demo-table">
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef>Gênero</th>
+            <td mat-cell *matCellDef="let element">{{element.gender}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+
+            <th mat-header-cell *matHeaderCellDef>Ação</th>
+
+            <td mat-cell *matCellDef="let element">
+
+                <a [routerLink]="element.id">
+                    <button mat-button title="Visualizar cliente">
+                        <mat-icon class="view">keyboard_arrow_right</mat-icon>
+                    </button>
+                </a>
+
+            </td>
+
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+</div>
+
+<div *ngIf="!customers?.content.length">
+
+    <p>Sem clientes cadastrados</p>
+
+</div>

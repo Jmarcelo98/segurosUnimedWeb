@@ -2,22 +2,13 @@ mat-divider {
     margin: 3em 0em;
 }
 
-.search{
+.search {
     margin-top: 35px;
-}
-
-.delete {
-    color: rgb(249, 43, 43);
-}
-
-.edit {
-    color: rgb(63, 163, 63);
 }
 
 .reset {
     background-color: #d5d5d5;
     color: black;
-    
 }
 
 .end {

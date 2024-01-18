@@ -3,4 +3,5 @@ export interface Customer {
     name: string;
     email: string;
     gender: string;
+    adresse: [];
 }

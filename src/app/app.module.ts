@@ -12,6 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpErrorInterceptor } from './core/interceptor/HttpErrorInterceptor';
 
 import { IConfig, provideEnvironmentNgxMask } from 'ngx-mask'
+import { AdresseAddEditModule } from './shared/components/adresse-add-edit/adresse-add-edit.module';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -28,6 +29,7 @@ const maskConfig: Partial<IConfig> = {
     BrowserAnimationsModule,
     HttpClientModule,
     CustomerAddEditModule,
+    AdresseAddEditModule,
     MatSnackBarModule,
 
   ],

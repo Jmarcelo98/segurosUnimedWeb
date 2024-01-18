@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
-export class CepService extends BaseService{
+export class CepService extends BaseService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     super('search-cep')
   }
 

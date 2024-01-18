@@ -1,0 +1,12 @@
+.delete {
+    color: rgb(249, 43, 43);
+}
+
+.edit {
+    color: rgb(63, 163, 63);
+}
+
+button {
+    margin-right: 15px;
+    border: solid rgb(225, 225, 225) 1px;
+}

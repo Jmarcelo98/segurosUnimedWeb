@@ -3,7 +3,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CustomerService } from '../../services/customer.service';
 
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CepService } from '../../services/cep.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 
@@ -15,13 +14,10 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export class CustomerAddEditComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<CustomerAddEditComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private customerService: CustomerService,
-    private cepService: CepService, private snackBar: MatSnackBar, private formBuilder: FormBuilder) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private customerService: CustomerService, private snackBar: MatSnackBar, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
-
-    this.disableFields(this.formCustomer);
 
     if (this.data.objectEdit != null) {
       this.patchForm(this.data.objectEdit)
@@ -42,14 +38,9 @@ export class CustomerAddEditComponent implements OnInit {
       uf: new FormControl(null, [Validators.required]),
     })
 
-
   });
 
   addCustomer() {
-
-    console.log(this.formCustomer.getRawValue());
-
-
 
     if (this.formCustomer.valid) {
 
@@ -91,28 +82,6 @@ export class CustomerAddEditComponent implements OnInit {
 
   }
 
-  searchAdresse() {
-
-    if (this.formCustomer.controls.adresse.controls.zipCode.valid) {
-
-      this.cepService.findByCep(this.formCustomer.get('adresse.zipCode')?.value).subscribe(res => {
-
-        this.formCustomer.get('adresse.publicPlace')?.setValue(res.logradouro)
-        this.formCustomer.get('adresse.complement')?.setValue(res.complemento)
-        this.formCustomer.get('adresse.district')?.setValue(res.bairro)
-        this.formCustomer.get('adresse.locality')?.setValue(res.localidade)
-        this.formCustomer.get('adresse.uf')?.setValue(res.uf)
-
-        this.patchForm(this.formCustomer)
-
-      })
-
-    }
-
-
-  }
-
-
   patchForm(form: any) {
     this.formCustomer.patchValue(form)
   }
@@ -122,16 +91,6 @@ export class CustomerAddEditComponent implements OnInit {
     for (const control of controls) {
       form.controls[control].updateValueAndValidity();
     }
-  }
-
-  disableFields(form: any) {
-
-    this.formCustomer.get('adresse.publicPlace')?.disable();
-    this.formCustomer.get('adresse.complement')?.disable();
-    this.formCustomer.get('adresse.district')?.disable();
-    this.formCustomer.get('adresse.locality')?.disable();
-    this.formCustomer.get('adresse.uf')?.disable();
-
   }
 
   cancelClick() {

@@ -1,0 +1,49 @@
+<mat-card>
+
+    <mat-card-header>
+        <mat-card-title>{{customer.name}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="mt-4 mb-4">
+
+        <div class="row">
+
+            <div class="col-6">
+                <mat-label>Email: </mat-label>
+                <span>{{customer.email}}</span>
+            </div>
+
+            <div class="col-6">
+                <mat-label>Gênero: </mat-label>
+                <span>{{gender(customer.gender)}}</span>
+            </div>
+
+        </div>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+
+        <button mat-button (click)="edit(customer)" title="Editar cliente">
+            <mat-icon class="edit">create</mat-icon>
+            Editar
+        </button>
+
+        <button mat-button (click)="delete(customer.id)" title="Excluir cliente">
+            <mat-icon class="delete">delete_outline</mat-icon>
+            Excluir
+        </button>
+
+    </mat-card-actions>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-header>
+        <mat-card-title>Endereços cadastrados</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content id="adresses">
+        <app-adresse [adresses]="customer.adresses"></app-adresse>
+    </mat-card-content>
+    
+</mat-card>
