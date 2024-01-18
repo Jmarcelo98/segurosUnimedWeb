@@ -23,7 +23,6 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.create()
     this.paginator.pageIndex = this.customers.number;
     this.paginator.totalElements = this.customers.totalElements;
   }

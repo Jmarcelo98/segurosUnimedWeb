@@ -18,6 +18,7 @@ export class CustomerAddEditComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, private customerService: CustomerService,
     private cepService: CepService, private snackBar: MatSnackBar, private formBuilder: FormBuilder) {
   }
+
   ngOnInit(): void {
 
     this.disableFields(this.formCustomer);
@@ -33,7 +34,7 @@ export class CustomerAddEditComponent implements OnInit {
     email: new FormControl(null, [Validators.email]),
     gender: new FormControl(null, [Validators.required]),
     adresse: this.formBuilder.group({
-      cep: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+      zipCode: new FormControl(null, [Validators.required, Validators.minLength(8)]),
       publicPlace: new FormControl(null, [Validators.required]),
       complement: new FormControl(null),
       district: new FormControl('', [Validators.required]),
@@ -46,7 +47,11 @@ export class CustomerAddEditComponent implements OnInit {
 
   addCustomer() {
 
-    if (this.formCustomer.get('adresse.cep')?.valid) {
+    console.log(this.formCustomer.getRawValue());
+
+
+
+    if (this.formCustomer.valid) {
 
       this.customerService.create(this.formCustomer.getRawValue()).subscribe(suc => {
         this.openSnackBar("Cliente cadastrado com sucesso", this.configSuccess);
@@ -54,7 +59,7 @@ export class CustomerAddEditComponent implements OnInit {
 
         setTimeout(() => {
           window.location.reload();
-        }, 1200);
+        }, 3000);
 
       }, err => {
         console.log(err);
@@ -88,9 +93,9 @@ export class CustomerAddEditComponent implements OnInit {
 
   searchAdresse() {
 
-    if (this.formCustomer.controls.adresse.controls.cep.valid) {
+    if (this.formCustomer.controls.adresse.controls.zipCode.valid) {
 
-      this.cepService.findByCep(this.formCustomer.get('adresse.cep')?.value).subscribe(res => {
+      this.cepService.findByCep(this.formCustomer.get('adresse.zipCode')?.value).subscribe(res => {
 
         this.formCustomer.get('adresse.publicPlace')?.setValue(res.logradouro)
         this.formCustomer.get('adresse.complement')?.setValue(res.complemento)
