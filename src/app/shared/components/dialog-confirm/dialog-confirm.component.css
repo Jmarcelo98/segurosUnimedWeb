@@ -1,0 +1,34 @@
+#content-mt {
+  margin-top: 15px;
+}
+
+#confirm-dialog .header {
+  background: #254890;;
+  color: white;
+  padding: 8px 24px;
+  align-items: center;
+}
+
+#confirm-dialog .text {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+
+#confirm-dialog .header button {
+  color: white;
+}
+
+#confirm-dialog .icon-close {
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#confirm-dialog .action-buttons {
+  display: flex;
+}
+
+#confirm-dialog .action-buttons button {
+  margin-left: 15px;
+}

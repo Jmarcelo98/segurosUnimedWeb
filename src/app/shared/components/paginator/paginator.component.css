@@ -1,0 +1,39 @@
+#paginator {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #paginator button {
+    margin: 0 8px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    color: #3f51b5;
+    border: none;
+    font-size: 12px;
+    border-radius: 100%;
+    font-weight: 700;
+  }
+  
+  #paginator button.selected {
+    border: solid 1px  #AFBAD7;
+    background: #FFFFFF;
+    color: #27314A;
+  }
+  
+  #paginator button.arrow-button {
+    width: 23px;
+    height: 23px;
+    color: #37549f;
+    background:  #EEEFF3;
+    font-size: 10px;
+  }
+  
+  #paginator button[disabled] {
+    background: #F7F8F9;
+    color: #93a5d5;
+  }

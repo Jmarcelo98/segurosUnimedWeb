@@ -1,0 +1,130 @@
+<h2>Clientes</h2>
+
+<!-- card de pesquisa -->
+
+<mat-card>
+
+    <mat-card-content>
+
+        <form [formGroup]="formSearch" (submit)="search()">
+
+            <div class="row">
+
+                <div class="col-md-5 col-12">
+                    <mat-label>Nome</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <i matPrefix class="fi fi-rr-envelope mr"></i>
+                        <input matInput name="name" type="text" (focusout)="resetAfterFocus('name')"
+                            formControlName="name" placeholder="João Marcelo">
+                    </mat-form-field>
+                </div>
+
+
+                <div class="col-md-5 col-12">
+                    <mat-label>E-mail</mat-label>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <i matPrefix class="fi fi-rr-envelope mr"></i>
+                        <input matInput name="email" email type="email" (focusout)="resetAfterFocus('email')"
+                            formControlName="email" placeholder="Ex. test@email.com">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-2 col-12">
+                    <mat-label>Gênero</mat-label>
+                    <mat-radio-group class="example-radio-group" formControlName="gender">
+                        <mat-radio-button value="M">Masculino</mat-radio-button>
+                        <mat-radio-button value="F">Feminino</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+            </div>
+
+            <div class="search">
+
+                <div class="row">
+
+                    <div class="col-6">
+
+                        <button mat-raised-button color="primary" type="submit">Filtrar</button>
+
+                    </div>
+
+                    <div class="col-6 end">
+
+                        <button mat-button class="reset" type="reset">Resetar</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </mat-card-content>
+
+</mat-card>
+
+<mat-divider></mat-divider>
+
+<!-- <app-customer-list [customers]="customers" ></app-customer-list> -->
+
+<div class="row">
+    <div class="col-12">
+        <button mat-raised-button color="primary">Adicionar Cliente</button>
+    </div>
+</div>
+
+
+<div *ngIf="customers?.content.lenght">
+
+    <table mat-table [dataSource]="customers?.content" class="mat-elevation-z8 demo-table">
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef>Gênero</th>
+            <td mat-cell *matCellDef="let element">{{element.gender}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+
+            <th mat-header-cell *matHeaderCellDef>Ações</th>
+
+            <td mat-cell *matCellDef="let element">
+                <button mat-button (click)="edit(element)">
+                    <mat-icon class="edit">create</mat-icon>
+                </button>
+
+                <button mat-button (click)="delete(element.id)">
+                    <mat-icon class="delete">delete_outline</mat-icon>
+                </button>
+            </td>
+
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <app-paginator (page)="pageClick($event)" [pageIndex]="paginator.pageIndex" [pageSize]="paginator.pageSize"
+        [totalElements]="paginator.totalElements!"></app-paginator>
+
+</div>
+
+<div *ngIf="!customers?.content.lenght">
+
+    <p>Sem clientes cadastrados</p>
+
+</div>

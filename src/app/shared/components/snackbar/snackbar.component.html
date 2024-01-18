@@ -1,0 +1,9 @@
+<div class="snackbar">
+    <div class="snackbar-text">
+        <i *ngIf="data?.text != 'Incorrect email or password'" class="fi fi-rr-check icon sucesso"></i>
+        <i *ngIf="data?.text == 'Incorrect email or password'" class="fi fi-rr-exclamation icon erro"></i>
+        <!-- <i class="fi fi fi-rr-info icon info"></i> -->
+        <span>{{ data?.text }}</span>
+    </div>
+    <button mat-raised-button (click)="snackBarRef.dismiss()"><i class="fi fi-rr-cross"></i></button>
+</div>

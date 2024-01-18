@@ -1,0 +1,21 @@
+<div id="paginator" *ngIf="maxPage > 1">
+
+    <button class="arrow-button" [disabled]="pageIndex == 0" (click)="back()">	
+        <mat-icon>arrow_left</mat-icon>
+    </button>
+
+    <!-- <button class="arrow-button" [disabled]="pageIndex == 0" (click)="back()"><i
+            class="fi fi-rr-angle-left"></i></button> -->
+
+    <button class="number-button" *ngFor="let item of buttons" [ngClass]="{'selected': item == pageIndex + 1  }"
+        (click)="showIndex(item)">{{item}}</button>
+
+    <button *ngIf="maxPage > 4" class="number-button" (click)="more()">...</button>
+
+
+    <button class="arrow-button" [disabled]="pageIndex + 1 == maxPage" (click)="next()">
+        <mat-icon>arrow_right</mat-icon>
+    </button>
+    <!-- <button class="arrow-button" [disabled]="pageIndex + 1 == maxPage" (click)="next()"><i
+            class="fi fi-rr-angle-right"></i></button> -->
+</div>
